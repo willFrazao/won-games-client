@@ -8,8 +8,14 @@ const meta: Meta<typeof Ribbon> = {
     children: 'Best Seller'
   },
   argTypes: {
-    children: {
-      type: 'string'
+    children: { type: 'string' },
+    color: {
+      options: ['primary', 'secondary'],
+      control: 'inline-radio'
+    },
+    size: {
+      options: ['normal', 'small'],
+      control: 'inline-radio'
     }
   }
 }

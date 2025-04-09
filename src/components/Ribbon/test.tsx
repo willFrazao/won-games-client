@@ -36,7 +36,7 @@ describe('<Ribbon />', () => {
   })
 
   it('should render with the small size', () => {
-    renderWithTheme(<Ribbon>Best Seller</Ribbon>)
+    renderWithTheme(<Ribbon size="small">Best Seller</Ribbon>)
 
     expect(screen.getByText(/Best Seller/i)).toHaveStyle({
       height: '2.6rem',
