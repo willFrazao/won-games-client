@@ -1,6 +1,10 @@
 import { createGlobalStyle, css } from 'styled-components'
 
-const GlobalStyles = createGlobalStyle`
+type GlobalStylesProps = {
+  removeBg?: boolean
+}
+
+const GlobalStyles = createGlobalStyle<GlobalStylesProps>`
   @font-face {
     font-family: 'Poppins';
     font-style: normal;
@@ -9,7 +13,6 @@ const GlobalStyles = createGlobalStyle`
     src: local('Poppins Light'), local('Poppins-Light'),
         url('/fonts/poppins-v12-latin-300.woff2') format('woff2');
   }
-
   @font-face {
     font-family: 'Poppins';
     font-style: normal;
@@ -34,9 +37,14 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    &::before,
+    &::after {
+      box-sizing: inherit;
+    }
   }
 
-  ${({ theme }) => css`
+  ${({ theme, removeBg }) => css`
     html {
       font-size: 62.5%;
     }
@@ -44,6 +52,11 @@ const GlobalStyles = createGlobalStyle`
     body {
       font-family: ${theme.font.family};
       font-size: ${theme.font.sizes.medium};
+
+      ${!removeBg &&
+      css`
+        background-color: ${theme.colors.mainBg};
+      `}
     }
   `}
 
